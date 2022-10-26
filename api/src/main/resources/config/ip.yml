@@ -1,0 +1,17 @@
+spring:
+  config:
+    activate:
+      on-profile: prod-ip
+
+origin:
+  ip: 43.201.134.167
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local-ip
+
+origin:
+  ip: localhost

@@ -3,25 +3,7 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Gradle Imported" enabled="true">
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.24/13a394eed5c4f9efb2a6d956e2086f1d81e857d9/lombok-1.18.24.jar" />
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.7.5/14b8494f9923ea27471a16f07529964cecfdb831/spring-boot-configuration-processor-2.7.5.jar" />
-        </processorPath>
-        <module name="mococo.core.main" />
-        <module name="mococo.api.main" />
-      </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="16">
-      <module name="api.main" target="15" />
-      <module name="api.test" target="15" />
-      <module name="com.mococo.core.main" target="15" />
-      <module name="com.mococo.core.test" target="15" />
-      <module name="core.main" target="15" />
-      <module name="core.test" target="15" />
-      <module name="mococo.main" target="17" />
-      <module name="mococo.test" target="17" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="15" />
   </component>
 </project>

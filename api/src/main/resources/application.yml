@@ -1,2 +1,22 @@
+spring:
+  config:
+    import:
+      - classpath:config/ip.yml
+      - classpath:config/database.yml
+  profiles:
+    group:
+      "prod":
+#        - prod-db TODO
+        - prod-ip
+      "local":
+#        - prod-db TODO
+        - local-ip
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
 server:
   port: 5000
+  error:
+    whitelabel:
+      enabled: false

@@ -1,0 +1,11 @@
+spring:
+  config:
+    activate:
+      on-profile: prod-ip
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local-ip
