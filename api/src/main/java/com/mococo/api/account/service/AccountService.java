@@ -30,8 +30,8 @@ public class AccountService {
         return AccountResponse.from(accountQueryService.requireGet(id));
     }
 
-    public AccountResponse get(String email) {
+    public boolean get(String email) {
         final EmailAddress emailAddress = EmailAddress.create(email);
-        return AccountResponse.from(accountQueryService.requireGet(emailAddress));
+        return accountQueryService.emailCheck(emailAddress);
     }
 }

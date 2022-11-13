@@ -33,15 +33,10 @@ public class UserRestController {
     private final AccountService accountService;
 
     @PostMapping(path = UrlConstants.JOIN)
-    @Operation(summary = "회원가입 (API 토큰 필요없음)")
+    @Operation(summary = "회원가입")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "회원 가입 성공",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Account.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
-                    content = @Content),
-            @ApiResponse(responseCode = "404", description = "Book not found",
-                    content = @Content) })
+            @ApiResponse(responseCode = "200", description = "join success", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Account.class)) }),
+            @ApiResponse(responseCode = "400", description = "join  fail", content = @Content)})
 
     public ResponseEntity<ApiResponseDto<AccountCreateResponse>> join(@Valid @RequestBody AccountCreateRequest request) {
 
@@ -54,6 +49,15 @@ public class UserRestController {
 
         return ResponseEntity.created(createdResourceLocation).body(ApiResponseDto.create(response));
     }
+
+
+    @PostMapping(path = UrlConstants.EMAILCHECK)
+    @Operation(summary = "이메일 조회", description = "중복 된 이메일인지 확인합니다.")
+    public ResponseEntity<Boolean> checkEmail(@Valid @RequestBody String email ) {
+        boolean response = accountService.get(email);
+        return  ResponseEntity.ok(response);
+    }
+
 
     @GetMapping(UrlConstants.PATH_ID)
     public ResponseEntity<ApiResponseDto<AccountResponse>> get(@PathVariable Long id) {

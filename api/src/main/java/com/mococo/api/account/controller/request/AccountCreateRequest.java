@@ -13,22 +13,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountCreateRequest {
 
-    @NotEmpty(message = "이름은 필수 입력 값입니다.")
-    private String name;
-
-    @NotEmpty(message = "주소는 필수 입력 값입니다.")
-    private String address;
 
     @Email(message = "이메일 형식이 아닙니다.")
     @NotEmpty(message = "이메일 주소는 필수 입력 값입니다.")
     private String email;
 
+    @NotEmpty(message = "패스워드는 필수 입력 값입니다.")
+    private String password;
+
+    @NotEmpty(message = "닉네임은 필수 입력 값입니다.")
+    private String nickName;
+
+    //Todo - Position enum 처리
+    @NotEmpty(message = "포지션은 필수 입력 값입니다.")
+    private String position;
 
     public AccountCreateCommand toCommand() {
         return AccountCreateCommand.builder()
-            .name(this.name)
-            .address(Address.create(this.address))
             .emailAddress(EmailAddress.create(this.email))
+            .password(password)
+            .nickName(nickName)
+            .position(position)
             .build();
     }
 

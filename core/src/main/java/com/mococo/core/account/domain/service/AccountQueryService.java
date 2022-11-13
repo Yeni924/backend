@@ -25,4 +25,9 @@ public class AccountQueryService {
         return accountRepository.findByEmailAddress(emailAddress)
             .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND_ERROR));
     }
+
+    public boolean emailCheck(EmailAddress emailAddress) {
+        return accountRepository.findByEmailAddress(emailAddress).isPresent();
+
+    }
 }

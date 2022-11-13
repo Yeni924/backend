@@ -10,17 +10,17 @@ import lombok.NoArgsConstructor;
 public class AccountResponse {
 
      private Long id;
-     private String name;
-     private String address;
+     private String nickName;
      private String emailAddress;
+     private String position;
 
 
      public static AccountResponse from(Account account){
           AccountResponse response = new AccountResponse();
           response.id = account.getId();
-          response.name = account.getName();
-          response.address = account.getAddressValue();
+          response.nickName = account.getNickName();
           response.emailAddress = account.getEmailAddressValue();
+          response.position = account.getPosition();
           return response;
      }
 

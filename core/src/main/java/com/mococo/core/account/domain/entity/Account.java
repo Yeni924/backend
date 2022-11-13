@@ -22,38 +22,41 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Size(max = 20)
-    private String name;
-
     @Embedded
-    @AttributeOverride(name = "value", column = @Column(name = "emailAddress", length = 20))
     private EmailAddress emailAddress;
 
     @Embedded
     private Address address;
 
-    @Size(max = 200)
+    @Column
     private String password;
+
+    @Column
+    private String nickName;
+
+    @Column
+    private String position;
 
     public static Account create(AccountSaveCommand command) {
         final Account user = new Account();
-        user.name = command.getName();
-        user.address = command.getAddress();
         user.emailAddress = command.getEmailAddress();
+        user.password = command.getPassword();
+        user.nickName = command.getNickName();
+        user.position = command.getPosition();
         return user;
     }
 
     public String getEmailAddressValue() {
-        return Objects.isNull(this.emailAddress) ? null : this.emailAddress.getValue();
+        return Objects.isNull(this.emailAddress) ? null : this.emailAddress.getEmail();
     }
 
     public String getAddressValue() {
         return Objects.isNull(this.address) ? null : this.address.getValue();
     }
+    
+    //TODO 비밀번호 암호화 추가  할것
 }

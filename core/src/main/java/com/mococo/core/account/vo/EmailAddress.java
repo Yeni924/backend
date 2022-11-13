@@ -24,7 +24,7 @@ public class EmailAddress {
     @NotNull
     @Size(max = 50)
     @Column(unique = true)
-    private String value;
+    private String email;
 
     public static EmailAddress create(String value) {
         if (StringUtils.isBlank(value)) {
@@ -32,7 +32,7 @@ public class EmailAddress {
         }
 
         final EmailAddress emailAddress = new EmailAddress();
-        emailAddress.value = value;
+        emailAddress.email = value;
         return emailAddress;
     }
 }

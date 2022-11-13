@@ -78,17 +78,16 @@ project(':api') {
 
     dependencies {
         compile project(':core')
-//        implementation 'org.springframework.boot:spring-boot-starter-actuator'
-//        implementation 'org.springframework.boot:spring-boot-starter-security'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+       implementation 'org.springframework.boot:spring-boot-starter-security'
+
         implementation 'org.springframework.boot:spring-boot-starter-web'
         implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
 
         implementation group: 'org.springdoc', name: 'springdoc-openapi-data-rest', version: '1.6.12'
         implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.12'
 
-
-//
-//        testImplementation 'org.springframework.security:spring-security-test'
+        testImplementation 'org.springframework.security:spring-security-test'
     }
 }
 
