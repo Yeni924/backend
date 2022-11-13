@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @ComponentScan(basePackages = {"com.mococo.core"})
+@ComponentScan(basePackages = {"com.mococo.api"})
 @EntityScan(basePackages = {"com.mococo.core"})
 @EnableJpaRepositories(basePackages = {"com.mococo.core"})
 @SpringBootApplication

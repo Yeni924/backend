@@ -1,5 +1,6 @@
 package com.mococo.api.account.controller.response;
 
+import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.domain.entity.Account;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,17 +11,18 @@ import lombok.NoArgsConstructor;
 public class AccountResponse {
 
      private Long id;
-     private String name;
-     private String address;
+     private String nickName;
      private String emailAddress;
-
+     private String position;
+     private Role role;
 
      public static AccountResponse from(Account account){
           AccountResponse response = new AccountResponse();
           response.id = account.getId();
-          response.name = account.getName();
-          response.address = account.getAddressValue();
+          response.nickName = account.getNickName();
           response.emailAddress = account.getEmailAddressValue();
+          response.position = account.getPosition();
+          response.role = account.getRole();
           return response;
      }
 

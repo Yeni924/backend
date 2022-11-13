@@ -15,6 +15,7 @@ public class AccountCommandService {
      private final AccountRepository accountRepository;
 
      public Account create(AccountSaveCommand command) {
+
           Account user = Account.create(command);
           return accountRepository.save(user);
      }
