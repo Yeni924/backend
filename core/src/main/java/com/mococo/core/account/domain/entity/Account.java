@@ -1,18 +1,15 @@
 package com.mococo.core.account.domain.entity;
 
+import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.dto.AccountSaveCommand;
 import com.mococo.core.account.vo.Address;
 import com.mococo.core.account.vo.EmailAddress;
 import java.util.Objects;
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.mococo.core.common.Base.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Account {
+public class Account extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,12 +38,17 @@ public class Account {
     @Column
     private String position;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Role role;
+
     public static Account create(AccountSaveCommand command) {
         final Account user = new Account();
         user.emailAddress = command.getEmailAddress();
         user.password = command.getPassword();
         user.nickName = command.getNickName();
         user.position = command.getPosition();
+        user.role = command.getRole();
         return user;
     }
 
@@ -57,6 +59,10 @@ public class Account {
     public String getAddressValue() {
         return Objects.isNull(this.address) ? null : this.address.getValue();
     }
-    
-    //TODO 비밀번호 암호화 추가  할것
+
+
+    public void setCredentials(String credentials) {
+        this.password = credentials;
+    }
+
 }

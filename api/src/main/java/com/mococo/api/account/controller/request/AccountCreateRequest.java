@@ -1,5 +1,6 @@
 package com.mococo.api.account.controller.request;
 
+import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.dto.AccountCreateCommand;
 import com.mococo.core.account.vo.Address;
 import com.mococo.core.account.vo.EmailAddress;
@@ -8,11 +9,11 @@ import javax.validation.constraints.NotEmpty;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Value;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountCreateRequest {
-
 
     @Email(message = "이메일 형식이 아닙니다.")
     @NotEmpty(message = "이메일 주소는 필수 입력 값입니다.")
@@ -28,10 +29,11 @@ public class AccountCreateRequest {
     @NotEmpty(message = "포지션은 필수 입력 값입니다.")
     private String position;
 
-    public AccountCreateCommand toCommand() {
+
+    public AccountCreateCommand toCommand(String credentials) {
         return AccountCreateCommand.builder()
             .emailAddress(EmailAddress.create(this.email))
-            .password(password)
+            .password(credentials)
             .nickName(nickName)
             .position(position)
             .build();

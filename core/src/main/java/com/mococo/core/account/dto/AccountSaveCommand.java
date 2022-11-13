@@ -1,10 +1,8 @@
 package com.mococo.core.account.dto;
 
-import com.mococo.core.account.vo.Address;
+import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.vo.EmailAddress;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
 
 public interface AccountSaveCommand {
 
@@ -13,4 +11,5 @@ public interface AccountSaveCommand {
      String getPassword();
      String getNickName();
      String getPosition();
+     Role getRole();
 }

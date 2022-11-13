@@ -16,9 +16,7 @@ public class UserDetailsImpl implements UserDetails {
 
     public UserDetailsImpl(Account account) {
         this.account = account;
-        //TODO ROLE enum 추가하기
-//        authorities.add(new SimpleGrantedAuthority("ROLE_" + account.getRole().name()));
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + "USER"));
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + account.getRole().name()));
     }
 
     @Override

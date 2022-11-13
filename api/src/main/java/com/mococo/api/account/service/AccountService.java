@@ -9,6 +9,7 @@ import com.mococo.core.account.domain.service.AccountCommandService;
 import com.mococo.core.account.domain.service.AccountQueryService;
 import com.mococo.core.account.vo.EmailAddress;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,10 +20,12 @@ public class AccountService {
 
      private final AccountCommandService accountCommandService;
      private final AccountQueryService accountQueryService;
+      private final PasswordEncoder passwordEncoder;
 
+    public AccountCreateResponse create(AccountCreateRequest request) {
 
-     public AccountCreateResponse create(AccountCreateRequest request) {
-          Account account = accountCommandService.create(request.toCommand());
+        var credentials = passwordEncoder.encode(request.getPassword());
+        Account account = accountCommandService.create(request.toCommand(credentials));
           return AccountCreateResponse.from(account);
      }
 
