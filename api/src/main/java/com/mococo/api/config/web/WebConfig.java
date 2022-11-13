@@ -1,3 +1,4 @@
+/*
 package com.mococo.api.config.web;
 
 import static org.springframework.http.HttpMethod.GET;
@@ -38,4 +39,4 @@ public class WebConfig implements WebMvcConfigurer {
 //                .addResourceLocations("file://" + uploadPath);
 //    }
 
-}
+}*/

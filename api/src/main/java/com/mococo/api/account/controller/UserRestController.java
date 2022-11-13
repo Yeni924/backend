@@ -5,9 +5,16 @@ import com.mococo.api.account.controller.response.AccountCreateResponse;
 import com.mococo.api.account.controller.response.AccountResponse;
 import com.mococo.api.account.service.AccountService;
 import com.mococo.api.common.constants.UrlConstants;
-import com.mococo.api.dto.ApiResponse;
 import java.net.URI;
 import javax.validation.Valid;
+
+import com.mococo.api.dto.ApiResponseDto;
+import com.mococo.core.account.domain.entity.Account;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +32,18 @@ public class UserRestController {
 
     private final AccountService accountService;
 
+    @PostMapping(path = UrlConstants.JOIN)
+    @Operation(summary = "회원가입 (API 토큰 필요없음)")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "회원 가입 성공",
+                    content = { @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Account.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                    content = @Content),
+            @ApiResponse(responseCode = "404", description = "Book not found",
+                    content = @Content) })
 
-    @PostMapping(UrlConstants.JOIN)
-    public ResponseEntity<ApiResponse<AccountCreateResponse>> join(@Valid @RequestBody AccountCreateRequest request) {
+    public ResponseEntity<ApiResponseDto<AccountCreateResponse>> join(@Valid @RequestBody AccountCreateRequest request) {
 
         final AccountCreateResponse response = accountService.create(request);
 
@@ -36,14 +52,14 @@ public class UserRestController {
             .buildAndExpand(response.getId())
             .toUri();
 
-        return ResponseEntity.created(createdResourceLocation).body(ApiResponse.create(response));
+        return ResponseEntity.created(createdResourceLocation).body(ApiResponseDto.create(response));
     }
 
     @GetMapping(UrlConstants.PATH_ID)
-    public ResponseEntity<ApiResponse<AccountResponse>> get(@PathVariable Long id) {
+    public ResponseEntity<ApiResponseDto<AccountResponse>> get(@PathVariable Long id) {
 
         final AccountResponse response = accountService.get(id);
 
-        return ResponseEntity.ok(ApiResponse.create(response));
+        return ResponseEntity.ok(ApiResponseDto.create(response));
     }
 }
