@@ -52,6 +52,7 @@ public class SecurityConfig {
          "/api/**",
          "/images/**",
          "/h2/**",
+         "/post/**",
     };
 
     @Bean

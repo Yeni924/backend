@@ -44,7 +44,7 @@ public class UserRestController {
         final AccountCreateResponse response = accountService.create(request);
 
         final URI createdResourceLocation = UriComponentsBuilder
-            .fromPath(UrlConstants.ACCOUNTS + UrlConstants.PATH_ID)
+            .fromPath(UrlConstants.ACCOUNTS)
             .buildAndExpand(response.getId())
             .toUri();
 
