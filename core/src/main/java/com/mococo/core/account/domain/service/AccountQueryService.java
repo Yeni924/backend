@@ -21,6 +21,13 @@ public class AccountQueryService {
             .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND_ERROR));
     }
 
+    public Account requireGet(String email) {
+
+        var emailAddress = EmailAddress.create(email);
+        return accountRepository.findByEmailAddress(emailAddress)
+                .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND_ERROR));
+    }
+
     public Account requireGet(EmailAddress emailAddress) {
         return accountRepository.findByEmailAddress(emailAddress)
             .orElseThrow(() -> new BusinessException(ErrorCode.USER_NOT_FOUND_ERROR));

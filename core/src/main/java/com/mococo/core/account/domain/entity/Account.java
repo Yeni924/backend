@@ -6,8 +6,6 @@ import com.mococo.core.account.vo.Address;
 import com.mococo.core.account.vo.EmailAddress;
 import java.util.Objects;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import com.mococo.core.common.Base.BaseEntity;
 import lombok.AccessLevel;
