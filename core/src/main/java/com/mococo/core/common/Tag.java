@@ -1,4 +1,4 @@
-package com.mococo.core.post.domain.entity;
+package com.mococo.core.common;
 
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -19,8 +19,12 @@ public class Tag {
     @Column
     private String tagName;
 
+    @Column
+    private String tagValue;
+
     @Builder
-    public Tag(String tagName) {
+    public Tag(String tagName, String tagValue) {
         this.tagName = tagName;
+        this.tagValue = tagValue;
     }
 }

@@ -7,7 +7,7 @@ import com.mococo.core.account.vo.EmailAddress;
 import java.util.Objects;
 import javax.persistence.*;
 
-import com.mococo.core.common.Base.BaseEntity;
+import com.mococo.core.common.Base.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Account extends BaseEntity {
+public class Account extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +45,6 @@ public class Account extends BaseEntity {
         user.emailAddress = command.getEmailAddress();
         user.password = command.getPassword();
         user.nickName = command.getNickName();
-        user.position = command.getPosition();
         user.role = command.getRole();
         return user;
     }

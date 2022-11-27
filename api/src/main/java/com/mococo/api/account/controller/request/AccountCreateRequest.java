@@ -1,15 +1,13 @@
 package com.mococo.api.account.controller.request;
 
-import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.dto.AccountCreateCommand;
-import com.mococo.core.account.vo.Address;
 import com.mococo.core.account.vo.EmailAddress;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Value;
+
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -25,17 +23,11 @@ public class AccountCreateRequest {
     @NotEmpty(message = "닉네임은 필수 입력 값입니다.")
     private String nickName;
 
-    //Todo - Position enum 처리
-    @NotEmpty(message = "포지션은 필수 입력 값입니다.")
-    private String position;
-
-
     public AccountCreateCommand toCommand(String credentials) {
         return AccountCreateCommand.builder()
             .emailAddress(EmailAddress.create(this.email))
             .password(credentials)
             .nickName(nickName)
-            .position(position)
             .build();
     }
 

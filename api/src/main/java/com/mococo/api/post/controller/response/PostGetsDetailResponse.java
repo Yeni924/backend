@@ -1,7 +1,7 @@
 package com.mococo.api.post.controller.response;
 
 import com.mococo.core.post.domain.entity.Post;
-import com.mococo.core.post.domain.entity.Tag;
+import com.mococo.core.common.Tag;
 
 import java.time.LocalDateTime;
 import java.util.List;

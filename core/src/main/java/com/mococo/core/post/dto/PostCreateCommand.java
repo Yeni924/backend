@@ -2,7 +2,7 @@ package com.mococo.core.post.dto;
 
 import com.mococo.core.account.domain.entity.Account;
 import com.mococo.core.account.vo.Address;
-import com.mococo.core.post.domain.entity.Tag;
+import com.mococo.core.common.Tag;
 import lombok.Builder;
 import lombok.Getter;
 

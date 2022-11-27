@@ -2,8 +2,9 @@ package com.mococo.core.post.domain.entity;
 
 import com.mococo.core.account.domain.entity.Account;
 import com.mococo.core.account.vo.Address;
+import com.mococo.core.common.Base.BaseTimeEntity;
+import com.mococo.core.common.Tag;
 import com.mococo.core.post.dto.PostSaveCommand;
-import com.mococo.core.common.Base.BaseEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Post extends BaseEntity {
+public class Post extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

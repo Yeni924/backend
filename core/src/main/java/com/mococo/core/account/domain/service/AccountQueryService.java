@@ -35,6 +35,9 @@ public class AccountQueryService {
 
     public boolean emailCheck(EmailAddress emailAddress) {
         return accountRepository.findByEmailAddress(emailAddress).isPresent();
+    }
 
+    public boolean nickNameCheck(String nickName){
+        return accountRepository.findByNickName(nickName).isPresent();
     }
 }
