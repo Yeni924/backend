@@ -6,6 +6,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountResponse {
@@ -13,16 +15,19 @@ public class AccountResponse {
      private Long id;
      private String nickName;
      private String emailAddress;
-     private String position;
      private Role role;
+     private LocalDateTime createAt;
+     private LocalDateTime updateAt;
+
 
      public static AccountResponse from(Account account){
           AccountResponse response = new AccountResponse();
           response.id = account.getId();
           response.nickName = account.getNickName();
           response.emailAddress = account.getEmailAddressValue();
-          response.position = account.getPosition();
           response.role = account.getRole();
+          response.createAt = account.getCreateTime();
+          response.updateAt = account.getUpdateTime();
           return response;
      }
 

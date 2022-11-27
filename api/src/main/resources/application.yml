@@ -6,39 +6,31 @@ spring:
   profiles:
     group:
       "prod":
-#        - prod-db TODO
+        #        - prod-db TODO
         - prod-ip
       "local":
-#        - prod-db TODO
+        #        - prod-db TODO
         - local-ip
 
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-dq67l.pub-cdb.ntruss.com:3306/mococo
+    username: hyeon
+    password: Signal3700
 
-  h2:
-    console:
-      enabled: true
-      path: /h2
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: update
 
-    datasource:
-      url: jdbc:h2:mem:numble-mococo # test 부분을 자신이 원하는 것으로 바꾸시면 됩니다.
-      username: sa # username과 password는 자신의 설정에 맞게
-      password:
-      driver-class-name: org.h2.Driver
-
-    jpa:
-      hibernate:
-        ddl-auto: create # 어플리케이션을 시작할 때 데이터베이스를 초기화하고 다시 테이블 생성
-      properties:
-        hibernate:
-          format_sql: true # 실행되는 query를 보여줌
 
   servlet:
     multipart:
       max-file-size: 50MB
       max-request-size: 50MB
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
 
 server:
   port: 5000

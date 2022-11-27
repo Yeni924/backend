@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
     Optional<Account> findByEmailAddress(EmailAddress email);
+    Optional<Account> findByNickName(String nickName);
 }

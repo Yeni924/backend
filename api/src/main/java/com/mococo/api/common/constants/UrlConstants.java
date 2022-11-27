@@ -10,5 +10,7 @@ public class UrlConstants {
      public static final String Post = "/post";
      public static final String CreatePost = "/create";
      public static final String GetPosts = "/gets";
+     public static final String NICK_NAME_CHECK = "/nickknamecheck";
+     public static final String GET_POSITION = "/getPosition";
 
 }

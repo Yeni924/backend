@@ -8,6 +8,8 @@ public enum ErrorCode {
 
     // 인증
     ALREADY_REGISTERED_MEMBER(400, "이미 가입된 회원 입니다."),
+    ALREADY_REGISTERED_EMAIL(400, "이미 가입된 이메일입니다."),
+    ALREADY_REGISTERED_NICKNAME(400, "이미 가입된 닉네임입니다."),
     MISMATCHED_PASSWORD(401, "패스워드가 일치하지 않습니다."),
     LOGIN_ERROR(401, "아이디 또는 비밀번호를 확인해주세요"),
 

@@ -13,8 +13,6 @@ public class AccountCreateCommand implements AccountSaveCommand{
      private EmailAddress emailAddress;
      private String password;
      private String nickName;
-     //Todo - Position enum 처리
-     private String position;
 
      @Override
      public Role getRole() {

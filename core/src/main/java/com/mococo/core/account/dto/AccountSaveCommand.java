@@ -10,6 +10,5 @@ public interface AccountSaveCommand {
      EmailAddress getEmailAddress();
      String getPassword();
      String getNickName();
-     String getPosition();
      Role getRole();
 }

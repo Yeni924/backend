@@ -1,7 +1,7 @@
 package com.mococo.api.post.controller.request;
 
 import com.mococo.core.account.domain.entity.Account;
-import com.mococo.core.post.domain.entity.Tag;
+import com.mococo.core.common.Tag;
 import com.mococo.core.post.dto.PostCreateCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
