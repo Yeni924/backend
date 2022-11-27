@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class PostCreateResponse {
 
     private Long id;
+
     public static PostCreateResponse from(Post post) {
         PostCreateResponse response = new PostCreateResponse();
         response.id = post.getId();

@@ -1,5 +1,6 @@
 package com.mococo.api.dto;
 
+import com.mococo.api.post.controller.response.PostGetsResponse;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -17,6 +18,10 @@ import java.util.List;
 
 public class PostCommandService {
         private final PostRepository postRepository;
+
+        public Optional<Post> get(Long postId){
+            return postRepository.findById(postId);
+        }
 
         public List<Post> gets(Pageable pageable){
             return postRepository.findWithPagination(pageable);

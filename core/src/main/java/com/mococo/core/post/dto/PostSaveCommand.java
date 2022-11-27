@@ -1,7 +1,6 @@
 package com.mococo.core.post.dto;
 
 import com.mococo.core.account.domain.entity.Account;
-import com.mococo.core.account.vo.Address;
 import com.mococo.core.common.Tag;
 
 import java.time.LocalDateTime;
@@ -15,7 +14,7 @@ public interface PostSaveCommand {
     String getContent() ;
     double getLongitude();
     double getLatitude() ;
-    Address getAddress() ;
+    String getAddress() ;
     LocalDateTime getPostAt() ;
 
 }

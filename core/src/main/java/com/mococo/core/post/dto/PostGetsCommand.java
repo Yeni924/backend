@@ -10,9 +10,10 @@ import java.util.List;
 
 @Getter
 @Builder
-public class PostCreateCommand  implements  PostSaveCommand{
+public class PostGetsCommand {
 
     private Account user;
+    private Long postId;
     private List<Tag> tags;
     private String title;
     private String content;
@@ -20,6 +21,4 @@ public class PostCreateCommand  implements  PostSaveCommand{
     private double latitude;
     private String address;
     private LocalDateTime postAt;
-
-
 }
