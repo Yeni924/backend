@@ -2,12 +2,12 @@ package com.mococo.core.account.domain.entity;
 
 import com.mococo.core.account.contstants.Role;
 import com.mococo.core.account.dto.AccountSaveCommand;
-import com.mococo.core.account.vo.Address;
 import com.mococo.core.account.vo.EmailAddress;
 import java.util.Objects;
 import javax.persistence.*;
 
 import com.mococo.core.common.Base.BaseTimeEntity;
+import com.mococo.core.post.dto.PostGetsCommand;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,8 +24,8 @@ public class Account extends BaseTimeEntity {
     @Embedded
     private EmailAddress emailAddress;
 
-    @Embedded
-    private Address address;
+    @Column
+    private String address;
 
     @Column
     private String password;
@@ -49,14 +49,16 @@ public class Account extends BaseTimeEntity {
         return user;
     }
 
+    public Account user(PostGetsCommand command) {
+        final Account user = new Account();
+        user.emailAddress = command.getUser().getEmailAddress();
+        user.nickName = command.getUser().getNickName();
+        return user;
+    }
+
     public String getEmailAddressValue() {
         return Objects.isNull(this.emailAddress) ? null : this.emailAddress.getEmail();
     }
-
-    public String getAddressValue() {
-        return Objects.isNull(this.address) ? null : this.address.getValue();
-    }
-
 
     public void setCredentials(String credentials) {
         this.password = credentials;

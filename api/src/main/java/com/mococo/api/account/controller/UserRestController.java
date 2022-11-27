@@ -39,7 +39,6 @@ public class UserRestController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "join success", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = AccountCreateResponse.class)) }),
             @ApiResponse(responseCode = "400", description = "join  fail", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) )})
-
     public ResponseEntity<ApiResponseDto<AccountCreateResponse>> join(@Valid @RequestBody AccountCreateRequest request) {
 
         final AccountCreateResponse response = accountService.create(request);
@@ -52,6 +51,8 @@ public class UserRestController {
         return ResponseEntity.created(createdResourceLocation).body(ApiResponseDto.create(response));
     }
 
+    @PostMapping(path = UrlConstants.EMAILCHECK)
+    @Operation(summary = "이메일 중복 조회", description = "중복 된 이메일인지 확인합니다.")
     public ResponseEntity<Boolean> checkEmail(@Valid @RequestBody String email ) {
         boolean response = accountService.emailCheck(email);
         return  ResponseEntity.ok(response);
@@ -66,9 +67,7 @@ public class UserRestController {
 
     @GetMapping(UrlConstants.PATH_ID)
     public ResponseEntity<ApiResponseDto<AccountResponse>> get(@Parameter(name = "id", description = "user 의 id", in = ParameterIn.PATH) @PathVariable Long id) {
-
         final AccountResponse response = accountService.get(id);
-
         return ResponseEntity.ok(ApiResponseDto.create(response));
     }
 }

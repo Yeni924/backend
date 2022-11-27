@@ -15,9 +15,10 @@ import java.util.List;
 public class PostCreateRequest {
 
     private String email;
-    private List<Tag> tags;
+   // private List<Tag> tags;
     private String title;
     private String content;
+    private String address;
     private double latitude;
     private double longitude;
     private LocalDateTime postAt;
@@ -25,12 +26,12 @@ public class PostCreateRequest {
     public PostCreateCommand toCommand(Account user) {
         return PostCreateCommand.builder()
                 .user(user)
-                .tags(tags)
+           //     .tags(tags)
                 .title(title)
                 .content(content)
                 .latitude(latitude)
                 .longitude(longitude)
-               // .address(address)
+                .address(address)
                 .postAt(postAt)
                 .build();
 

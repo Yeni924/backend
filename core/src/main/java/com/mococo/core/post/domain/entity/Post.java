@@ -1,7 +1,6 @@
 package com.mococo.core.post.domain.entity;
 
 import com.mococo.core.account.domain.entity.Account;
-import com.mococo.core.account.vo.Address;
 import com.mococo.core.common.Base.BaseTimeEntity;
 import com.mococo.core.common.Tag;
 import com.mococo.core.post.dto.PostSaveCommand;
@@ -10,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,8 +42,9 @@ public class Post extends BaseTimeEntity {
     @Column
     private double latitude;
 
-    @Embedded
-    private Address address;
+    @Size(max = 50)
+    @Column(name = "address")
+    private String address;
 
     @Column
     private LocalDateTime postAt;
